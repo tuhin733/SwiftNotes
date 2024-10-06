@@ -27,20 +27,9 @@ Effortless note-taking with a sleek, secure design.
 - **Pin Important Notes**: Keep important notes at the top for quick access.
 - **Markdown Support**: Style your notes with markdown using `MarkdownText.kt`.
 - **Note Encryption**: Option to encrypt notes for enhanced privacy.
-- **Multi-language Support**: Available in:
-    - Bengali
-    - Gujarati
-    - Kannada
-    - Malayalam
-    - Marathi
-    - Punjabi
-    - Tamil
-    - Telugu
-    - Urdu
-    - Odia
-    - Assamese
-    - English
-    - Hindi
+- **Multi-language Support**: Available in:  `English, Bengali, Hindi, Punjabi, Gujarati, Marathi, Tamil, Telugu, Malayalam, Kannada, Urdu, Odia, Assamese`
+
+  
 - **Splash Screen**: Smooth launch experience using Android 12's Splash Screen API.
 
 ---
