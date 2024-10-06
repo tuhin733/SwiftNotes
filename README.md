@@ -4,7 +4,7 @@
 <br></br>
 
 # Swift Notes
-Lightweight android notes app with Material You.
+Effortless note-taking with a sleek, secure design.
 
 [![Download from GitHub](https://img.shields.io/badge/Download%20from-GitHub-blue?logo=github)](https://github.com/tuhin733/SwiftNotes/releases/latest)
 
