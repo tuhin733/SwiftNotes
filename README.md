@@ -1,69 +1,85 @@
-
-
-<div align="center">
-    <!-- TODO: App Logo here 
-<img width="192" height="192" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" align="center" alt="">
--->
-<br></br>
-
-
 # Swift Notes
-Lightweight android notes app with Material You.
 
-<!--
-App Download Buttons
-[<img src=".github/github.png" alt="Get it on GitHub" height="55">](TODO: download link here) &nbsp; 
-[<img src=".github/fdroid.png" alt="Get it on F-Droid" height="55">](TODO: download link here)) &nbsp;
+[![GitHub license](https://img.shields.io/github/license/tuhin733/SwiftNotes)](https://github.com/tuhin733/SwiftNotes/blob/main/LICENSE) 
+[![GitHub issues](https://img.shields.io/github/issues/tuhin733/SwiftNotes)](https://github.com/tuhin733/SwiftNotes/issues) 
+[![GitHub stars](https://img.shields.io/github/stars/tuhin733/SwiftNotes)](https://github.com/tuhin733/SwiftNotes/stargazers)
 
--->
----
-
-</div>
-<div align="left">
-
-<div align="center">
-<!--
-TODO: screenshots here
-    <img src="metadata/en-US/images/phoneScreenshots/1_home.png" width="30%"  alt=""/>
-    <img src="metadata/en-US/images/phoneScreenshots/2_widgets.png" width="30%"  alt=""/>
-    <img src="metadata/en-US/images/phoneScreenshots/3_preview.png" width="30%"  alt=""/>
--->
-</div>
-</div>
+**Swift Notes** is a simple, feature-rich, and privacy-focused note-taking app for Android built using Jetpack Compose and the Material 3 design system. The app allows users to easily create, manage, and secure notes, with support for multiple languages.
 
 ---
 
+## ✨ Features
 
-## 🎉 Features
-- 📝 Sleek, Minimalistic Design
-- 🌟 Full Markdown Support (Images Included)
-- 🔒 Secure, Encrypted Notes Vault
-- 🚀 Constant Updates & Improvements
-- 🔐 Zero Permissions Required
+- **Create, Edit, and Delete Notes**: Simple and intuitive note management.
+- **Pin Important Notes**: Keep important notes at the top for quick access.
+- **Markdown Support**: Style your notes with markdown using `MarkdownText.kt`.
+- **Note Encryption**: Option to encrypt notes for enhanced privacy.
+- **Multi-language Support**: Available in:
+    - Bengali
+    - Gujarati
+    - Kannada
+    - Malayalam
+    - Marathi
+    - Punjabi
+    - Tamil
+    - Telugu
+    - Urdu
+    - Odia
+    - Assamese
+    - English
+    - Hindi
+- **Splash Screen**: Smooth launch experience using Android 12's Splash Screen API.
 
 ---
 
-## 💬 Contact Me
+## 📸 Screenshots
 
--  Email : <!-- TODO -->
--  Discord : <!-- TODO -->
+*Include screenshots of the app here*
 
 ---
-## ⚠️ License
-    Swift Notes
 
-    Copyright (c)2024 naim
-    
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-    
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
-    
-    The above copyright notice, this permission notice, and its license shall be included in all copies or substantial portions of the Software.
-    
-    You can find a copy of the GNU General Public License v3 [here](https://www.gnu.org/licenses/)</p>
+## 🛠️ Technologies Used
+
+- **Kotlin**: For Android development.
+- **Jetpack Compose**: For building declarative UI.
+- **Room Database**: Local storage of notes.
+- **Material 3**: For a modern and intuitive UI.
+
+---
+
+## 📖 Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/tuhin733/SwiftNotes.git
+    ```
+2. **Open in Android Studio**:
+    - Launch Android Studio and open the cloned project.
+3. **Build and Run**:
+    - Run the app on an emulator or a physical device.
+
+---
+
+
+## 📝 License
+
+Distributed under the GPL-3.0 License. See `LICENSE` for more information.
+
+---
+
+## 📫 Contact
+
+Naim - [tuhinsarkar746@gmail.com](mailto:your-email@example.com)  
+GitHub: [tuhin733](https://github.com/tuhin733)
+
+---
+
+## 💡 Acknowledgments
+
+- Jetpack Compose Documentation
+- Material Design Guidelines
+- Open Source Community
+
+---
