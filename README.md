@@ -4,7 +4,7 @@
 <br></br>
 
 # Swift Notes
-Lightweight android notes app with Material You.
+Effortless note-taking with a sleek, secure design.
 
 [![Download from GitHub](https://img.shields.io/badge/Download%20from-GitHub-blue?logo=github)](https://github.com/tuhin733/SwiftNotes/releases/latest)
 
@@ -27,20 +27,9 @@ Lightweight android notes app with Material You.
 - **Pin Important Notes**: Keep important notes at the top for quick access.
 - **Markdown Support**: Style your notes with markdown using `MarkdownText.kt`.
 - **Note Encryption**: Option to encrypt notes for enhanced privacy.
-- **Multi-language Support**: Available in:
-    - Bengali
-    - Gujarati
-    - Kannada
-    - Malayalam
-    - Marathi
-    - Punjabi
-    - Tamil
-    - Telugu
-    - Urdu
-    - Odia
-    - Assamese
-    - English
-    - Hindi
+- **Multi-language Support**: Available in:  `English, Bengali, Hindi, Punjabi, Gujarati, Marathi, Tamil, Telugu, Malayalam, Kannada, Urdu, Odia, Assamese`
+
+  
 - **Splash Screen**: Smooth launch experience using Android 12's Splash Screen API.
 
 ---
