@@ -1,14 +1,15 @@
+Categories:
+  - Writing
+  - Notes
 License: GPL-3.0
+AuthorName: Naim
+WebSite: https://github.com/tuhin733/SwiftNotes
 SourceCode: https://github.com/tuhin733/SwiftNotes
 IssueTracker: https://github.com/tuhin733/SwiftNotes/issues
-Name: Swift Notes
-Summary: A simple and secure note-taking app
-Description: |-
-    Swift Notes is a lightweight app designed for taking quick notes.
-    It supports markdown, encryption, and pinning of important notes.
 
+AutoName: Swift Notes
 RepoType: git
-Repo: https://github.com/tuhin733/SwiftNotes.git
+Repo: https://github.com/tuhin733/SwiftNotes
 
 Builds:
   - versionName: 1.0.0
@@ -18,7 +19,38 @@ Builds:
     gradle:
       - yes
 
-AutoUpdateMode: none
-UpdateCheckMode: none
-CurrentVersion: 1.0.0
-CurrentVersionCode: 100
+AutoUpdateMode: Tags
+UpdateCheckMode: Tags
+UpdateCheckData: v1.0.0
+
+Summary: Lightweight Android notes app with Material You
+Description: |
+    Swift Notes is a simple, open-source Android notes app, providing a clean and user-friendly interface. Built using Jetpack Compose and Material You, it offers note-taking features with Markdown support, encryption options, and various language support. This app focuses on privacy and does not rely on proprietary services.
+
+    Features:
+    - Material You dynamic themes
+    - Markdown note rendering
+    - Secure notes with encryption
+    - Multi-language support: English, Hindi, Bengali, Gujarati, Kannada, Malayalam, Marathi, Punjabi, Tamil, Telugu, Urdu, Odia, Assamese
+    - Privacy-focused: No proprietary dependencies or tracking
+
+    Swift Notes is designed to be lightweight, and accessible, and adapts to different screen sizes. It’s an ideal choice for users looking for a simple and functional notes app without sacrificing privacy.
+
+AntiFeatures:
+  - NonFreeNet: false
+  - Ads: false
+  - Tracking: false
+  - NonFreeAdd: false
+  - NonFreeDep: false
+
+Changelog: |
+    Version 1.0.0:
+    - Initial release with Material You design
+    - Added Markdown support
+    - Added encryption for notes
+    - Multi-language support for 12 languages
+    - Privacy-focused: No tracking or ads
+
+MaintainerNotes: |
+    The app uses Jetpack Compose, which requires at least Java 11 and Gradle 7.2+.
+
