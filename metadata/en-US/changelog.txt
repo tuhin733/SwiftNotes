@@ -1,0 +1,8 @@
+• Initial release with core note-taking features.
+• Added encryption for secure notes.
+• Implemented pinning to highlight important notes.
+• Introduced Markdown support for rich text formatting.
+• Multi-language support added: English, Bengali, Hindi, Punjabi, Gujarati, Marathi, Tamil, Telugu, Malayalam, Kannada, Urdu, Odia, Assamese.
+• Enhanced user interface with Material You design.
+• Improved search functionality for faster note retrieval.
+• Added sorting and filtering options for better note organization.

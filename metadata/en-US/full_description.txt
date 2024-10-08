@@ -1,0 +1,9 @@
+Swift Notes is a lightweight Android app with Material You, offering features like Markdown support,
+note encryption, and pinning. It’s available in multiple languages, including English, Bengali, Hindi,
+Punjabi, Gujarati, Marathi, Tamil, Telugu, Malayalam, Kannada, Urdu, Odia, and Assamese.
+
+
+
+
+
+
