@@ -38,9 +38,10 @@ Effortless note-taking with a sleek, secure design.
 
 <div align="left">
 <div align="center">
-    <img src="metadata/home-screen.jpg" width="30%"  alt=""/>
-    <img src="metadata/edit-screen.jpg" width="30%"  alt=""/>
-    <img src="metadata/settings-screen.jpg" width="30%"  alt=""/>
+    <img src="metadata/en-US/images/phoneScreenshots/1_home-screen.jpg" width="30%"  alt=""/>
+    <img src="metadata/en-US/images/phoneScreenshots/2_edit-screen.jpg" width="30%"  alt=""/>
+    <img src="metadata/en-US/images/phoneScreenshots/3_settings-screen.jpg" width="30%"  alt=""/>
+    <img src="metadata/en-US/images/phoneScreenshots/4_about-screen.jpg" width="30%"  alt=""/>
 </div>
 </div>
 
