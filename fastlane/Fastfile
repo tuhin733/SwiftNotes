@@ -1,8 +1,0 @@
-default_platform(:android)
-
-platform :android do
-  desc "Build and publish to F-Droid"
-  lane :fdroid_release do
-    gradle(task: "assembleRelease")
-  end
-end
