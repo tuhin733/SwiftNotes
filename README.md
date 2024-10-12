@@ -79,7 +79,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 ## 📫 Contact
 
-Naim - [tuhinsarkar746@gmail.com](mailto:your-email@example.com)  
+Email - [tuhinsarkar746@gmail.com](mailto:your-email@example.com)  
 GitHub: [tuhin733](https://github.com/tuhin733)
 
 ---
