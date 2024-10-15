@@ -6,8 +6,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.Redo
 import androidx.compose.material.icons.automirrored.rounded.Undo
+import androidx.compose.material.icons.filled.Dehaze
 import androidx.compose.material.icons.outlined.PushPin
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Dehaze
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Done
 import androidx.compose.material.icons.rounded.Lock

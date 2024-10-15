@@ -45,9 +45,18 @@ fun NoteCard(
 ) {
 
     fun removeImagesFromMarkdown(markdown: String): String {
-        // Regex to remove the image markdown syntax !()
-        val imagePattern = Regex("!\\((.*?)\\)")
-        return markdown.replace(imagePattern, "") // Remove image URIs
+        // Regex to remove image markdown syntax: !(image_uri)
+        val imagePattern = Regex("!\\(.*?\\)")
+
+        // Replace the image syntax with an empty string
+        val withoutImages = markdown.replace(imagePattern, "")
+
+        // Remove any empty lines and excess spaces
+        return withoutImages
+            .lineSequence() // Split by lines to process each line individually
+            .map { it.trim() } // Trim spaces from each line
+            .filter { it.isNotEmpty() } // Remove empty lines
+            .joinToString("\n") // Join lines back with a newline separator
     }
 
 
