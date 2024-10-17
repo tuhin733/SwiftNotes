@@ -9,7 +9,6 @@ import com.naim.swiftnotes.data.repository.NoteRepositoryImpl
 import com.naim.swiftnotes.domain.model.Note
 import com.naim.swiftnotes.presentation.components.DecryptionResult
 import com.naim.swiftnotes.presentation.components.EncryptionHelper
-import com.naim.swiftnotes.widget.NotesWidget
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +54,6 @@ class NoteUseCase @Inject constructor(
                     }
                 }
                 this@NoteUseCase.notes = processedNotes
-                NotesWidget().updateAll(context)
             }
         }
     }

@@ -10,7 +10,6 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.naim.swiftnotes.domain.repository.SettingsRepository
-import com.naim.swiftnotes.widget.NotesWidgetReceiver
 import kotlinx.coroutines.flow.first
 
 
@@ -62,20 +61,6 @@ class SettingsRepositoryImpl (private val context: Context) : SettingsRepository
     }
 
     override suspend fun getEveryNotesWidget(): List<Pair<Int, Int>> {
-        val preferences = context.dataStore.data.first()
-        val widgetPairs = mutableListOf<Pair<Int, Int>>()
-
-        preferences.asMap().forEach { entry ->
-            val key = entry.key.name
-
-            if (entry.key.name.startsWith(NotesWidgetReceiver.WIDGET_PREFERENCE)) {
-                val widgetId = key.substringAfter(NotesWidgetReceiver.WIDGET_PREFERENCE).toIntOrNull()
-                if (widgetId != null) {
-                    val value = entry.value as? Int ?: 0
-                    widgetPairs.add(widgetId to value)
-                }
-            }
-        }
-        return widgetPairs
+        return emptyList() //Return an empty list  widgets are not in use
     }
 }
