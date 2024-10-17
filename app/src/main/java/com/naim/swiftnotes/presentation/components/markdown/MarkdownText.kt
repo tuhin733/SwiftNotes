@@ -1,6 +1,7 @@
 package com.naim.swiftnotes.presentation.components.markdown
 
 
+import RenderMarkdownLink
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -119,11 +120,13 @@ fun MarkdownText(
     val lines = markdown.lines()
     val lineProcessors = listOf(
         HeadingProcessor(),
+        LabelProcessor(),
         ListItemProcessor(),
         CodeBlockProcessor(),
         QuoteProcessor(),
         ImageInsertionProcessor(),
-        CheckboxProcessor()
+        CheckboxProcessor(),
+        MarkdownLinkProcessor()
     )
     val markdownBuilder = MarkdownBuilder(lines, lineProcessors)
     markdownBuilder.parse()
@@ -230,6 +233,24 @@ fun RenderMarkdownElement(
                 )
             }
 
+            is Label -> {
+                Box(
+                    modifier = Modifier
+                        .background(
+                            color = element.color.copy(alpha = 0.2f), // Background color with transparency
+                            shape = RoundedCornerShape(8.dp) // Chip-like rounded corners
+                        )
+                ) {
+                    Text(
+                        text = element.text,
+                        color = element.color, // Set label text color
+                        fontWeight = weight,
+                        fontSize = (fontSize.value - 2).sp,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp) // Additional padding for text
+                    )
+                }
+            }
+
             is CheckboxItem -> {
                 MarkdownCheck(
                     content = {
@@ -302,6 +323,13 @@ fun RenderMarkdownElement(
 
             is NormalText -> {
                 Text(text = buildString(element.text, weight), fontSize = fontSize, lineHeight = 20.sp, overflow = TextOverflow.Ellipsis)
+            }
+
+            is MarkdownLink -> {
+                RenderMarkdownLink(
+                    displayText = element.text,
+                    url = element.url
+                )
             }
         }
         // Add new line to selectionContainer but don't render it

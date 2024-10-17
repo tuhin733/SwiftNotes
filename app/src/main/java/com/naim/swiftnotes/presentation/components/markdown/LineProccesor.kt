@@ -1,5 +1,7 @@
 package com.naim.swiftnotes.presentation.components.markdown
 
+import androidx.compose.ui.graphics.Color
+
 interface MarkdownLineProcessor {
     fun canProcessLine(line: String): Boolean
     fun processLine(line: String, builder: MarkdownBuilder)
@@ -37,6 +39,32 @@ class CheckboxProcessor : MarkdownLineProcessor {
         val checked = line.contains(Regex("^\\[[Xx]]"))
         val text = line.replace(Regex("^\\[[ xX]] ?"), "").trim()
         builder.add(CheckboxItem(text, checked, builder.lineIndex))
+    }
+}
+
+class LabelProcessor : MarkdownLineProcessor {
+    // Define colors for specific label keywords
+    private val labelColors = mapOf(
+        "work" to Color(0xFF42A5F5),
+        "personal" to Color(0xFF66BB6A),
+        "urgent" to Color(0xFFEF5350),
+        "idea" to Color(0xFFFFCA28),
+    )
+
+    override fun canProcessLine(line: String): Boolean {
+        // Check if the line starts with '#'
+        return line.startsWith("[LABEL]") // Modify this to recognize label syntax
+    }
+
+    override fun processLine(line: String, builder: MarkdownBuilder) {
+        // Remove '#' and trim whitespace from the label text
+        val labelText = line.drop(7).trim()
+        // Determine color based on keywords
+        val color = labelColors.entries.firstOrNull { labelText.contains(it.key, ignoreCase = true) }?.value
+            ?: Color.DarkGray // Default color if no keywords match
+
+        // Add label to the builder
+        builder.add(Label(labelText, color)) // Modify to add Label instead of Heading
     }
 }
 
@@ -80,3 +108,20 @@ class ImageInsertionProcessor : MarkdownLineProcessor {
         builder.add(ImageInsertion(photoUri))
     }
 }
+
+class MarkdownLinkProcessor : MarkdownLineProcessor {
+    private val linkRegex = Regex("\\[(.+)]\\((https?://[\\w./?=#]+)\\)")
+
+    override fun canProcessLine(line: String): Boolean {
+        return linkRegex.containsMatchIn(line)
+    }
+
+    override fun processLine(line: String, builder: MarkdownBuilder) {
+        val matchResult = linkRegex.find(line)
+        if (matchResult != null) {
+            val (text, url) = matchResult.destructured
+            builder.add(MarkdownLink(text, url))
+        }
+    }
+}
+

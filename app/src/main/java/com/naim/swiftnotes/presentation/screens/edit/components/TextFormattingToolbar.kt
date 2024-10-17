@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBackIos
 import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
 import androidx.compose.material.icons.automirrored.rounded.FormatListBulleted
+import androidx.compose.material.icons.automirrored.rounded.Label
 import androidx.compose.material.icons.rounded.CheckBox
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.FormatBold
@@ -23,6 +24,8 @@ import androidx.compose.material.icons.rounded.FormatUnderlined
 import androidx.compose.material.icons.rounded.HMobiledata
 import androidx.compose.material.icons.rounded.Highlight
 import androidx.compose.material.icons.rounded.Image
+import androidx.compose.material.icons.rounded.Label
+import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.StrikethroughS
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -73,6 +76,10 @@ fun TextFormattingToolbar(viewModel: EditViewModel) {
                 ToolbarItem(Icons.AutoMirrored.Rounded.FormatListBulleted, "Bullet List", color = colorIcon) {
                     viewModel.insertText("- ")
                 },
+                ToolbarItem(Icons.AutoMirrored.Rounded.Label, "Label", color = colorIcon) {
+                    viewModel.insertText("[LABEL] ")
+                },
+
                 ToolbarItem(Icons.Rounded.CheckBox, "Checkbox", color = colorIcon) {
                     viewModel.insertText("[ ] ")
                 },
@@ -104,14 +111,14 @@ fun TextFormattingToolbar(viewModel: EditViewModel) {
                 ToolbarItem(Icons.AutoMirrored.Rounded.ArrowBackIos,"Bullet List", color = colorArrow) {
                     currentIndex--
                 },
+                ToolbarItem(Icons.Rounded.Link, "Link", color = colorIcon) {
+                    viewModel.insertText("[text](url)", -1, newLine = false)
+                },
                 ToolbarItem(Icons.Rounded.StrikethroughS, "Strikethrough", color = colorIcon) {
                     viewModel.insertText("~~~~", -2 , newLine = false)
                 },
                 ToolbarItem(Icons.Rounded.Highlight, "Highlight", color = colorIcon) {
                     viewModel.insertText("====", offset = -2, newLine = false)
-                },
-                ToolbarItem(Icons.Rounded.Code, "Code Block", color = colorIcon) {
-                    viewModel.insertText("```\n\n```", -4)
                 },
                 ToolbarItem(Icons.AutoMirrored.Rounded.ArrowForwardIos,"Bullet List", color = colorArrow) {
                     currentIndex++
@@ -120,6 +127,9 @@ fun TextFormattingToolbar(viewModel: EditViewModel) {
             listOf(
                 ToolbarItem(Icons.AutoMirrored.Rounded.ArrowBackIos,"Bullet List", color = colorArrow) {
                     currentIndex--
+                },
+                ToolbarItem(Icons.Rounded.Code, "Code Block", color = colorIcon) {
+                    viewModel.insertText("```\n\n```", -4)
                 },
                 ToolbarItem(Icons.Rounded.FormatUnderlined, "Underline", color = colorIcon) {
                     viewModel.insertText("__", -1 , newLine = false)

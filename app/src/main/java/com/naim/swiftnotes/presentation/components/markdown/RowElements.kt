@@ -1,5 +1,7 @@
 package com.naim.swiftnotes.presentation.components.markdown
 
+import androidx.compose.ui.graphics.Color
+
 sealed interface MarkdownElement {
     fun render(builder: StringBuilder)
 }
@@ -7,6 +9,13 @@ sealed interface MarkdownElement {
 data class Heading(val level: Int, val text: String) : MarkdownElement {
     override fun render(builder: StringBuilder) {
         builder.append("#".repeat(level)).append(" $text\n\n")
+    }
+}
+
+// Label
+data class Label(val text: String, val color: Color) : MarkdownElement {
+    override fun render(builder: StringBuilder) {
+        builder.append("$text\n\n")
     }
 }
 
@@ -47,5 +56,11 @@ data class NormalText(val text: String) : MarkdownElement {
 data class ImageInsertion(val photoUri: String) : MarkdownElement {
     override fun render(builder: StringBuilder) {
         builder.append("!($photoUri)\n\n")
+    }
+}
+
+data class MarkdownLink(val text: String, val url: String) : MarkdownElement {
+    override fun render(builder: StringBuilder) {
+        builder.append("[$text]($url)\n\n")
     }
 }
