@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.glance.appwidget.updateAll
 import com.naim.swiftnotes.data.repository.NoteRepositoryImpl
 import com.naim.swiftnotes.domain.model.Note
 import com.naim.swiftnotes.presentation.components.DecryptionResult

@@ -1,7 +1,6 @@
 package com.naim.swiftnotes.presentation.screens.edit.components
 
 import android.content.Context
-
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,7 +23,6 @@ import androidx.compose.material.icons.rounded.FormatUnderlined
 import androidx.compose.material.icons.rounded.HMobiledata
 import androidx.compose.material.icons.rounded.Highlight
 import androidx.compose.material.icons.rounded.Image
-import androidx.compose.material.icons.rounded.Label
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.StrikethroughS
 import androidx.compose.material3.Icon

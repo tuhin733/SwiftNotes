@@ -3,7 +3,6 @@ package com.naim.swiftnotes.presentation.screens.home.widgets
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,13 +22,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.naim.swiftnotes.R
 import com.naim.swiftnotes.domain.model.Note
-import com.naim.swiftnotes.presentation.components.markdown.MarkdownText
-import com.naim.swiftnotes.presentation.screens.settings.model.SettingsViewModel
-import coil.compose.AsyncImage
 import com.naim.swiftnotes.presentation.components.markdown.ImageInsertion
 import com.naim.swiftnotes.presentation.components.markdown.MarkdownElement
+import com.naim.swiftnotes.presentation.components.markdown.MarkdownText
+import com.naim.swiftnotes.presentation.screens.settings.model.SettingsViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

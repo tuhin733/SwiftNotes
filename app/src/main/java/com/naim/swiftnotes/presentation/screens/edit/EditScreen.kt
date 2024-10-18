@@ -46,7 +46,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
@@ -75,7 +74,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.Locale
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun EditNoteView(
     id: Int,
@@ -100,7 +98,6 @@ fun EditNoteView(
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TopBarActions(pagerState: PagerState, onClickBack: () -> Unit, viewModel: EditViewModel) {
     val context = LocalContext.current
@@ -161,7 +158,6 @@ fun TopBarActions(pagerState: PagerState, onClickBack: () -> Unit, viewModel: Ed
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PagerContent(pagerState: PagerState, viewModel: EditViewModel,settingsViewModel: SettingsViewModel, onClickBack: () -> Unit) {
     HorizontalPager(
@@ -175,7 +171,7 @@ fun PagerContent(pagerState: PagerState, viewModel: EditViewModel,settingsViewMo
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(pagerState: PagerState,coroutineScope: CoroutineScope, onClickBack: () -> Unit, viewModel: EditViewModel) {
     CenterAlignedTopAppBar(
@@ -195,7 +191,7 @@ fun TopBar(pagerState: PagerState,coroutineScope: CoroutineScope, onClickBack: (
 
 @Composable
 fun ObserveLifecycleEvents(viewModel: EditViewModel) {
-    val lifecycleOwner = LocalLifecycleOwner.current
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_STOP) {
@@ -247,7 +243,6 @@ fun BottomModal(viewModel: EditViewModel, settingsViewModel: SettingsViewModel) 
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MinimalisticMode(
     alignment : Alignment.Vertical = Alignment.CenterVertically,
@@ -288,7 +283,6 @@ fun MinimalisticMode(
 
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun EditScreen(viewModel: EditViewModel,settingsViewModel: SettingsViewModel, pagerState: PagerState,onClickBack: () -> Unit) {
 
@@ -340,7 +334,6 @@ fun EditScreen(viewModel: EditViewModel,settingsViewModel: SettingsViewModel, pa
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PreviewScreen(viewModel: EditViewModel, settingsViewModel: SettingsViewModel, pagerState: PagerState, onClickBack: () -> Unit) {
     if (viewModel.isNoteInfoVisible.value) BottomModal(viewModel, settingsViewModel)
@@ -441,7 +434,6 @@ fun MarkdownBox(
     Spacer(modifier = Modifier.height(3.dp))
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ModeButton(
     pagerState: PagerState,
@@ -475,7 +467,6 @@ fun ModeButton(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun RenderButton(
     pagerState: PagerState,
