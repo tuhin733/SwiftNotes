@@ -74,33 +74,31 @@ fun NoteCard(
     }
 
 
-    val borderModifier = when {
-        isBorderEnabled -> {
+    val borderModifier = if (isBorderEnabled) {
+        Modifier.border(
+            width = 2.dp,
+            color = MaterialTheme.colorScheme.primary,
+            shape = shape
+        )
+    } else {
+        if (containerColor != Color.Black) {
+            Modifier
+        } else {
+            // Apply a border with surfaceContainerHighest color if containerColor is black
             Modifier.border(
-                width = 1.5.dp,
-                color = MaterialTheme.colorScheme.primary,
-                shape = shape
-            )
-        }
-        containerColor != Color.Black -> {
-            Modifier.border(
-                width = 1.5.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.surfaceContainerHighest,
                 shape = shape
             )
         }
-        else -> {
-            Modifier.border(
-                width = 0.5.dp,
-                color = if (isSystemInDarkTheme()) {
-                    Color(0xFFE0E0E0).copy(alpha = 0.24f) // Dark mode border
-                } else {
-                    Color(0xFFE0E0E0) // Light mode border
-                },
-                shape = shape
-            )
-        }
-    }
+    }.then(
+        Modifier.border(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.primaryContainer, // Default border color
+            shape = shape
+        )
+    )
+
 
     ElevatedCard(
         modifier = Modifier

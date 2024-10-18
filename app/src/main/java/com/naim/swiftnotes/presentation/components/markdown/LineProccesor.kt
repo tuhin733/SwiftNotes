@@ -45,9 +45,9 @@ class CheckboxProcessor : MarkdownLineProcessor {
 class LabelProcessor : MarkdownLineProcessor {
     // Define colors for specific label keywords
     private val labelColors = mapOf(
-        "work" to Color(0xFF42A5F5),
-        "personal" to Color(0xFF66BB6A),
-        "urgent" to Color(0xFFEF5350),
+        "Important" to Color(0xFFEF5350),
+        "To-Do" to Color(0xFF4CAF50),
+        "Reminders" to Color(0xFF03A9F4),
         "idea" to Color(0xFFFFCA28),
     )
 
@@ -59,9 +59,12 @@ class LabelProcessor : MarkdownLineProcessor {
     override fun processLine(line: String, builder: MarkdownBuilder) {
         // Remove '#' and trim whitespace from the label text
         val labelText = line.drop(7).trim()
+
+        val customColor = Color(0xFF009688)
+
         // Determine color based on keywords
         val color = labelColors.entries.firstOrNull { labelText.contains(it.key, ignoreCase = true) }?.value
-            ?: Color.DarkGray // Default color if no keywords match
+            ?: customColor // Default color if no keywords match
 
         // Add label to the builder
         builder.add(Label(labelText, color)) // Modify to add Label instead of Heading
