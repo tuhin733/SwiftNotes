@@ -48,7 +48,7 @@ class LabelProcessor : MarkdownLineProcessor {
         "Important" to Color(0xFFEF5350),
         "To-Do" to Color(0xFF4CAF50),
         "Reminders" to Color(0xFF03A9F4),
-        "idea" to Color(0xFFFFCA28),
+        "Idea" to Color(0xFFFFCA28),
     )
 
     override fun canProcessLine(line: String): Boolean {

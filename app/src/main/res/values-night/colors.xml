@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splashScreenBackground">#F6F9FEFF</color>
-
+    <color name="splashScreenBackground">#0F1417FF</color>
 </resources>

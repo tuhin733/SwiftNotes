@@ -5,22 +5,27 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.rounded.Backup
 import androidx.compose.material.icons.rounded.EnhancedEncryption
 import androidx.compose.material.icons.rounded.FileOpen
 import androidx.compose.material.icons.rounded.ImportExport
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
@@ -100,8 +106,9 @@ fun CloudScreen(navController: NavController, settingsViewModel: SettingsViewMod
                     customAction = {onExit ->
                         if (settingsViewModel.settings.value.encryptBackup) {
                             PasswordPrompt(
+                                icon = Icons.Rounded.Backup,
+                                title = stringResource(id = R.string.backup),
                                 context = context,
-                                text = stringResource(id = R.string.backup),
                                 settingsViewModel = settingsViewModel,
                                 onExit = { password ->
                                     if (password != null) {
@@ -132,8 +139,9 @@ fun CloudScreen(navController: NavController, settingsViewModel: SettingsViewMod
                     customAction = { onExit ->
                         if (settingsViewModel.settings.value.encryptBackup) {
                             PasswordPrompt(
+                                icon = Icons.Rounded.ImportExport,
+                                title = stringResource(id = R.string.restore),
                                 context = context,
-                                text = stringResource(id = R.string.restore),
                                 settingsViewModel = settingsViewModel,
                                 onExit = { password ->
                                     if (password != null) {
@@ -183,19 +191,28 @@ fun currentDateTime(): String {
 }
 
 @Composable
-fun PasswordPrompt(context: Context, text: String, settingsViewModel: SettingsViewModel, onExit: (TextFieldValue?) -> Unit, onBackup: () -> Unit = {}) {
+fun PasswordPrompt(
+    context: Context,
+    icon: ImageVector = Icons.Default.Lock, // New: Icon parameter
+    title: String = "Vault", // New: Title parameter
+    settingsViewModel: SettingsViewModel,
+    onExit: (TextFieldValue?) -> Unit,
+    onBackup: () -> Unit = {}
+) {
     var password by remember { mutableStateOf(TextFieldValue("")) }
+    var isPasswordVisible by remember { mutableStateOf(false) } // For eye icon toggle
+
     Dialog(
         onDismissRequest = { onExit(null) },
         properties = DialogProperties(usePlatformDefaultWidth = false),
     ) {
-        LazyColumn {
+        LazyColumn{
             item {
-                Column(
-                    verticalArrangement = Arrangement.Center,
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
-                        .fillMaxHeight(0.2f)
+                        .fillMaxHeight(0.3f)
                         .background(
                             color = MaterialTheme.colorScheme.surfaceContainerLow,
                             shape = shapeManager(
@@ -203,30 +220,54 @@ fun PasswordPrompt(context: Context, text: String, settingsViewModel: SettingsVi
                                 radius = settingsViewModel.settings.value.cornerRadius
                             )
                         )
-                ) {
+                ){
+                    Spacer(modifier = Modifier.height(16.dp)) // Top padding
+
+                    // Icon and Title
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(48.dp)
+                    )
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(top = 8.dp, bottom = 16.dp)
+                    )
+
+                    // Password Input with Eye Icon Toggle
                     Box(
                         modifier = Modifier
-                            .padding(12.dp)
+                            .padding(horizontal = 16.dp)
                             .background(
-                                color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                color = MaterialTheme.colorScheme.surfaceContainerLowest,
                                 shape = shapeManager(
                                     isBoth = true,
                                     radius = settingsViewModel.settings.value.cornerRadius
                                 )
                             )
                     ) {
-                        CustomTextField(
-                            hideContent = true,
-                            value = password,
-                            onValueChange = { password = it },
-                            placeholder = stringResource(id = R.string.password_prompt)
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            CustomTextField(
+                                hideContent = !isPasswordVisible,
+                                value = password,
+                                onValueChange = { password = it },
+                                placeholder = stringResource(id = R.string.password_prompt),
+                                modifier = Modifier.weight(1f)
+                            )
+                            IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
+                                Icon(
+                                    imageVector = if (isPasswordVisible) Icons.Default.Visibility
+                                    else Icons.Default.VisibilityOff,
+                                    contentDescription = "Toggle Password Visibility"
+                                )
+                            }
+                        }
                     }
+
+                    // Button with Password Validation
                     Button(
-                        modifier = Modifier
-                            .padding(12.dp)
-                            .wrapContentWidth()
-                            .align(Alignment.End),
                         onClick = {
                             if (password.text.isNotBlank()) {
                                 onExit(password)
@@ -235,13 +276,16 @@ fun PasswordPrompt(context: Context, text: String, settingsViewModel: SettingsVi
                                 Toast.makeText(context, R.string.invalid_input, Toast.LENGTH_SHORT).show()
                             }
                         },
-                        content = {
-                            Text(text)
-                        }
-                    )
+                        modifier = Modifier
+                            .padding(12.dp)
+                            .align(Alignment.End)
+                    ) {
+                        Text(text = "Submit")
+                    }
                 }
             }
         }
     }
 }
+
 

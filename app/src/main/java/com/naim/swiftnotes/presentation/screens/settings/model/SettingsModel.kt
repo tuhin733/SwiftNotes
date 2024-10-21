@@ -122,7 +122,7 @@ class SettingsViewModel @Inject constructor(
 
     private fun handleBackupResult(result: BackupResult, context: Context) {
         when (result) {
-            is BackupResult.Success -> {}
+            is BackupResult.Success -> {showToast("Backup Successful", context)}
             is BackupResult.Error -> showToast("Error", context)
             BackupResult.BadPassword -> showToast(context.getString(R.string.detabase_restore_error), context)
         }

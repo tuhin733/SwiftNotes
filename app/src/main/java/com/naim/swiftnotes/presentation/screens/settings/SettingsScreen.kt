@@ -165,7 +165,7 @@ fun BottomModal(navController: NavController,settingsViewModel: SettingsViewMode
     val uriHandler = LocalUriHandler.current
 
     ModalBottomSheet(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+        containerColor = MaterialTheme.colorScheme.background,
         onDismissRequest = { onExit() }
     ) {
         Column(

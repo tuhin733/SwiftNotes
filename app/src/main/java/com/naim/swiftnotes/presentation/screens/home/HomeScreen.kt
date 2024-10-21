@@ -54,7 +54,6 @@ fun HomeView (
     if (viewModel.isPasswordPromptVisible.value) {
         PasswordPrompt(
             context = context,
-            text = stringResource(id = R.string.password_continue),
             settingsViewModel = settingsModel,
             onExit = { password ->
                 if (password != null) {

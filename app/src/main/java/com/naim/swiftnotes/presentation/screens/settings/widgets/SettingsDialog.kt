@@ -39,7 +39,7 @@ fun <T> ListDialog(
         Column(
             modifier = Modifier
                 .background(
-                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    color = MaterialTheme.colorScheme.background,
                     shape = shapeManager(isBoth = true, radius = settingsViewModel.settings.value.cornerRadius)
                 )
                 .padding(22.dp, 0.dp, 22.dp, 0.dp)
