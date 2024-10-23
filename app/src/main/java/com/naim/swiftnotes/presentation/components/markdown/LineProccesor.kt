@@ -63,8 +63,9 @@ class LabelProcessor : MarkdownLineProcessor {
         val customColor = Color(0xFF009688)
 
         // Determine color based on keywords
-        val color = labelColors.entries.firstOrNull { labelText.contains(it.key, ignoreCase = true) }?.value
-            ?: customColor // Default color if no keywords match
+        val color =
+            labelColors.entries.firstOrNull { labelText.contains(it.key, ignoreCase = true) }?.value
+                ?: customColor // Default color if no keywords match
 
         // Add label to the builder
         builder.add(Label(labelText, color)) // Modify to add Label instead of Heading
@@ -127,4 +128,22 @@ class MarkdownLinkProcessor : MarkdownLineProcessor {
         }
     }
 }
+
+class MarkdownAudioProcessor : MarkdownLineProcessor {
+    // Regex to detect ![audio](path)
+    private val audioRegex = Regex("!\\[audio]\\((.+)\\)")
+
+    override fun canProcessLine(line: String): Boolean {
+        return audioRegex.containsMatchIn(line)
+    }
+
+    override fun processLine(line: String, builder: MarkdownBuilder) {
+        val matchResult = audioRegex.find(line)
+        if (matchResult != null) {
+            val (audioPath) = matchResult.destructured
+            builder.add(AudioElement(audioPath))
+        }
+    }
+}
+
 

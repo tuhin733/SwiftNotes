@@ -93,7 +93,7 @@ fun NoteCard(
     }.then(
         Modifier.border(
             width = 1.dp,
-            color = MaterialTheme.colorScheme.primaryContainer, // Default border color
+            color = MaterialTheme.colorScheme.outlineVariant, // Default border color
             shape = shape
         )
     )

@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 
 // Light Color Palette
 val primaryLight = Color(0xFF004A77) // Deep blue for a vibrant feel
-val primaryContainerLight = Color(0xFFD0E6F3) // Softer blue for background elements
-val onPrimaryContainerLight = Color(0xFF434343) // White text on primary container
+val primaryContainerLight = Color(0xFFC7E7FF) // Softer blue for background elements
+val onPrimaryContainerLight = Color(0xFF004A77)
 val secondaryLight = Color(0xFF007B9D) // Slightly lighter blue
 val onSecondaryLight = Color(0xFFFFFFFF)
 val secondaryContainerLight = Color(0xFFB3E5FC)
@@ -24,8 +24,8 @@ val surfaceLight = Color(0xFFFFFFFF)
 val onSurfaceLight = Color(0xFF1C1C1C)
 val surfaceVariantLight = Color(0xFFE0E0E0) // Light gray for subtle depth
 val onSurfaceVariantLight = Color(0xFF424242)
-val outlineLight = Color(0xFFBDBDBD) // Neutral outline
-val outlineVariantLight = Color(0xFF757575)
+val outlineLight = Color(0xFF9D9D9D) // Neutral outline
+val outlineVariantLight = Color(0xFFC7E7FF)
 val inverseSurfaceLight = Color(0xFF333333)
 val inverseOnSurfaceLight = Color(0xFFFFFFFF)
 val inversePrimaryLight = Color(0xFF80DEEA)
@@ -40,8 +40,8 @@ val surfaceContainerHighestLight = Color(0xFFCCCCCC)
 // Dark Color Palette
 val primaryDark = Color(0xFF80DEEA) // Lighter blue for dark backgrounds
 val onPrimaryDark = Color(0xFF00232D)
-val primaryContainerDark = Color(0xFF262B2E)
-val onPrimaryContainerDark = Color(0xFFFFFFFF)
+val primaryContainerDark = Color(0xFF004D6B)
+val onPrimaryContainerDark = Color(0xFFC5F3FF)
 val secondaryDark = Color(0xFF007B9D)
 val onSecondaryDark = Color(0xFFFFFFFF)
 val secondaryContainerDark = Color(0xFF004A77)
@@ -61,7 +61,7 @@ val onSurfaceDark = Color(0xFFE0E0E0)
 val surfaceVariantDark = Color(0xFF424242)
 val onSurfaceVariantDark = Color(0xFFBDBDBD)
 val outlineDark = Color(0xFF757575)
-val outlineVariantDark = Color(0xFF424242)
+val outlineVariantDark = Color(0xFF2F2F2F)
 val inverseSurfaceDark = Color(0xFFE0E0E0)
 val inverseOnSurfaceDark = Color(0xFF121212)
 val inversePrimaryDark = Color(0xFF00232D)

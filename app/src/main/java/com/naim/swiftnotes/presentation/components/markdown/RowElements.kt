@@ -64,3 +64,10 @@ data class MarkdownLink(val text: String, val url: String) : MarkdownElement {
         builder.append("[$text]($url)\n\n")
     }
 }
+
+data class AudioElement(val uri: String) : MarkdownElement {
+    override fun render(builder: StringBuilder) {
+        builder.append("![audio]($uri)\n\n")
+    }
+}
+

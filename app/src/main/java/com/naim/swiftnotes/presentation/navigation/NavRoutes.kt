@@ -2,6 +2,7 @@ package com.naim.swiftnotes.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
+import com.naim.swiftnotes.presentation.screens.guide.UserGuideScreen
 import com.naim.swiftnotes.presentation.screens.settings.MainSettings
 import com.naim.swiftnotes.presentation.screens.settings.model.SettingsViewModel
 import com.naim.swiftnotes.presentation.screens.settings.settings.AboutScreen
@@ -29,6 +30,7 @@ sealed class NavRoutes(val route: String) {
     data object Widgets : NavRoutes("settings/widgets")
     data object About : NavRoutes("settings/about")
     data object Support : NavRoutes("settings/support")
+    data object UserGuide : NavRoutes("settings/user_guide")
 }
 
 val settingScreens = mapOf<String, @Composable (settingsViewModel: SettingsViewModel, navController : NavController) -> Unit>(
@@ -39,5 +41,7 @@ val settingScreens = mapOf<String, @Composable (settingsViewModel: SettingsViewM
     NavRoutes.Privacy.route to { settings, navController -> PrivacyScreen(navController, settings) },
     NavRoutes.Markdown.route to { settings, navController ->  MarkdownScreen(navController,settings) },
     NavRoutes.Tools.route to { settings, navController -> ToolsScreen(navController,settings) },
-    NavRoutes.About.route to { settings, navController -> AboutScreen(navController,settings) }
+    NavRoutes.About.route to { settings, navController -> AboutScreen(navController,settings) },
+    NavRoutes.UserGuide.route to { settings, navController -> UserGuideScreen(navController,settings) }
+
 )

@@ -182,7 +182,7 @@ fun OnRadiusClicked( settingsViewModel: SettingsViewModel,onExit: (Int) -> Unit)
                 .padding(32.dp, 3.dp, 32.dp, 1.dp)
                 .background(
                     shape = shape,
-                    color = MaterialTheme.colorScheme.surfaceContainerHigh
+                    color = MaterialTheme.colorScheme.secondary
                 )
                 .height(62.dp),
         )

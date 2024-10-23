@@ -14,6 +14,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBackIos
 import androidx.compose.material.icons.automirrored.rounded.ArrowForwardIos
 import androidx.compose.material.icons.automirrored.rounded.FormatListBulleted
 import androidx.compose.material.icons.automirrored.rounded.Label
+import androidx.compose.material.icons.rounded.AudioFile
 import androidx.compose.material.icons.rounded.CheckBox
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.FormatBold
@@ -40,6 +41,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.naim.swiftnotes.presentation.components.getExternalStorageDir
 import com.naim.swiftnotes.presentation.components.getImageName
+import com.naim.swiftnotes.presentation.components.markdown.getAudioName
 import com.naim.swiftnotes.presentation.screens.edit.model.EditViewModel
 import java.io.File
 import java.io.FileOutputStream
@@ -58,6 +60,15 @@ fun TextFormattingToolbar(viewModel: EditViewModel) {
     val colorIcon = MaterialTheme.colorScheme.inverseSurface
     var currentIndex by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
+
+    // Launcher for audio selection
+    val launcherAudio = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let {
+            val audioPath = saveAudioToAppStorage(context, it)
+            viewModel.insertText("![audio]($audioPath)")
+        }
+    }
+
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
             val savedUri = saveImageToAppStorage(context, it)
@@ -108,6 +119,9 @@ fun TextFormattingToolbar(viewModel: EditViewModel) {
             listOf(
                 ToolbarItem(Icons.AutoMirrored.Rounded.ArrowBackIos,"Bullet List", color = colorArrow) {
                     currentIndex--
+                },
+                ToolbarItem(Icons.Rounded.AudioFile, "Insert Audio", color = colorIcon) {
+                    launcherAudio.launch("audio/*")
                 },
                 ToolbarItem(Icons.Rounded.Link, "Link", color = colorIcon) {
                     viewModel.insertText("[text](url)", -1, newLine = false)
@@ -181,4 +195,21 @@ private fun saveImageToAppStorage(context: Context, uri: Uri): String {
 
     inputStream?.close()
     return imageFile.path.toString()
+}
+
+private fun saveAudioToAppStorage(context: Context, uri: Uri): String {
+    val appStorageDir = getExternalStorageDir(context)
+    if (!appStorageDir.exists()) {
+        appStorageDir.mkdirs()
+    }
+
+    val audioFile = File(appStorageDir, getAudioName(context, uri)) // Use the new getAudioName function
+
+    context.contentResolver.openInputStream(uri)?.use { input ->
+        FileOutputStream(audioFile).use { output ->
+            input.copyTo(output)
+        }
+    }
+
+    return audioFile.path.toString()
 }

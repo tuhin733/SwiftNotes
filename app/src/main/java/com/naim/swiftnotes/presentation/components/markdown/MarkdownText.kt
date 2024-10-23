@@ -22,6 +22,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -126,7 +130,8 @@ fun MarkdownText(
         QuoteProcessor(),
         ImageInsertionProcessor(),
         CheckboxProcessor(),
-        MarkdownLinkProcessor()
+        MarkdownLinkProcessor(),
+        MarkdownAudioProcessor()
     )
     val markdownBuilder = MarkdownBuilder(lines, lineProcessors)
     markdownBuilder.parse()
@@ -330,6 +335,11 @@ fun RenderMarkdownElement(
                     displayText = element.text,
                     url = element.url
                 )
+            }
+
+            is AudioElement -> {
+                // Render an audio player
+                AudioPlayer(uri = element.uri)
             }
         }
         // Add new line to selectionContainer but don't render it
